@@ -1,0 +1,37 @@
+#THIS VARIABLE CONTROLS THE GAME LOOP - WHILE IT'S TRUE IT KEEPS THE GAME OPEN#
+gamerunning= True
+
+#LOCATIONS IN THE GAME#
+bridge = ('Captains Bridge', 'the bridge of the ship, complete with a captains chair.')
+lift = ('Space Lift', 'the lift that can take you various places in the ship.')
+control_room = ('Control Room', 'a place where you can control various aspects of the ship.')
+
+#ROOM TRANSITION CONDITIONS#
+transitions = {
+	bridge: (lift, control_room),
+	control_room: (bridge,),
+	lift: (bridge,)
+	}
+
+#STARTING ROOM#
+location = bridge
+
+#MAIN GAME LOOP#
+while gamerunning == True:
+	
+	#ROOM ENTRY#
+	print ('You are in {}'.format(location[1]))
+	
+	print ('\nYou can see exits to the following:\n----------')
+
+	for i, t in enumerate(transitions[location]):
+		print ('>', i + 1, t[0])
+	print ('----------\n')
+		
+	print ('Where would you like to go?\n')
+	playerinput = int(input('Choice: '))
+	if choice > len(transitions):
+		print ('\r')
+		location = transitions[location][playerinput - 1]
+	else:
+
