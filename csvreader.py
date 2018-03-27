@@ -20,8 +20,6 @@ with open('map.csv', 'r') as csvfile:
 		while xcounter < xpos:
 			csvmap.append([[xcounter, ycounter],[row[xcounter]]])
 			xcounter = xcounter + 1
-			
-			print (xcounter, ycounter)
 
 		#ITERATES AND RESETS THE XCOUNTER AND YCOUNTER VALUES TO PROPERLY FORMAT THE csvmap#
 		xcounter = 0
@@ -35,4 +33,3 @@ for i in csvmap:
 		if data != "":
 			#PRINTS THE COORDINATES AND THE NAME OF THE ITEM#
 			gamemap.append([[i[0]], [i[1]]])
-print (gamemap)
