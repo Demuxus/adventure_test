@@ -5,31 +5,25 @@ import csv
 xpos = 0
 xcounter = 0
 ycounter = 0
-csvmap = []
+gamemap = []
 gamemap = []
 
-	#CSV TABLE TO LIST ARRAY CONVERTER#
-#This is a standard code for reading a csv file, this could be remote on a server non native
-with open('map.csv', 'r') as csvfile:
-	reader = csv.reader(csvfile, delimiter=',')
+#CSV TABLE TO LIST ARRAY CONVERTER#
+	
+#CODE FOR OPENING A CSV FILE, CAN BE USED ANYWHERE A CSV TABLE IS STORED - EVEN REMOTELY IF THE PATH IS SPECIFIED#
+#r = READABLE#
+with open("map.csv", "r") as csvfile:
+	reader = csv.reader(csvfile, delimiter=",")
 	for row in reader:
-		#xpos AND ypos FIND OUT TOTAL TABLE SIZE#
+		#xpos USED TO FIND OUT FINAL POSITION OF CURRENT ROW#
 		xpos = len(row)
 		
 		#MAKES A 2D ARRAY (not AR-RAY)CONTAINING THE X AND Y AND ROOM NAME DATA FOR EACH LIST CHUNK#
 		while xcounter < xpos:
-			csvmap.append([[xcounter, ycounter],[row[xcounter]]])
+			if row[xcounter] != "":
+				gamemap.append([xcounter, ycounter, row[xcounter]])
 			xcounter = xcounter + 1
 
-		#ITERATES AND RESETS THE XCOUNTER AND YCOUNTER VALUES TO PROPERLY FORMAT THE csvmap#
+		#ITERATES AND RESETS THE XCOUNTER AND YCOUNTER VALUES TO PROPERLY FORMAT THE gamemap#
 		xcounter = 0
 		ycounter = ycounter +1
-
-#---------------------#
-
-#PROOF OF CONCEPT - SEARCHES csvmap FOR EACH ITEM WHERE THE NAME ISN'T EMPTY#
-for i in csvmap:
-	for data in i[1]:
-		if data != "":
-			#PRINTS THE COORDINATES AND THE NAME OF THE ITEM#
-			gamemap.append([[i[0]], [i[1]]])
