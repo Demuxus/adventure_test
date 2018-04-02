@@ -6,32 +6,33 @@ gamerunning= True
 inputerror = False
 	
 #STARTING ROOM#
-location = centre
+location = (1, 1) #This is the location where the player starts. (1, 1), for example, is the position of room "centre"
 
 #MAIN GAME LOOP#
 while gamerunning == True:
 	
 	#ROOM ENTRY#
 	
-	entryroom(inputerror, location, transitions)
-
-	playerinput = input('Choice: ')
+	
+	
 	try:
-		playerinput = int(playerinput)
-		if int(playerinput) <= len(transitions[location]) and int(playerinput) >= 1:
-			location = transitions[location][int(playerinput) - 1]
-			inputerror = False
+		#if playerinput
+		playerinput = (input('>>> ')).lower()
+		
+		playerlist = playerinput.split(" ")
+		
+		if playerlist[0] == "go":
+			if playerlist[1] == "n":
+				print ("north")
+			if playerlist[1] == "e":
+				print ("east")
+			if playerlist[1] == "s":
+				print ("south")
+			if playerlist[1] == "w":
+				print ("west")
 	
-		else:
-			print ('\r')
-			print ('That location does not exist, please try again\n') 
-			inputerror = True
 	except ValueError:
-	
-		print ("\n***That's not right!***")
-
-		print ("\n")
-	
+		pass
 	 
    
 
